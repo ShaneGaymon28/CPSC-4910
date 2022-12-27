@@ -16,6 +16,12 @@ This project was a semester-long, group based project to gain experience on how 
   * AWS ElasticBeanstalk
 
 ## Teammates
+ * Spencer Shaw
+ * Blue Hartsell
+ * Justin Kristenses
+ * Jeremiah Fenner
+
+
 
 
 
