@@ -9,7 +9,7 @@ This project was a semester-long, group based project to gain experience on how 
 ## Features
 
 ## Technologies
-  * ASP.NET 6
+  * ASP.NET MVC 6
   * EntityFramework Core
   * .NET Identity
   * MySql
