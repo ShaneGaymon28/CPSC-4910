@@ -18,7 +18,7 @@ This project was a semester-long, group based project to gain experience on how 
 ## Teammates
  * Spencer Shaw
  * Blue Hartsell
- * Justin Kristenses
+ * Justin Kristensen
  * Jeremiah Fenner
 
 
