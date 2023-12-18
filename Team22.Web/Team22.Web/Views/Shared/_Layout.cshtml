@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Team22.Web</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>*@
+    @*<link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>*@
+    @*<link rel="stylesheet" href="Team22.Web/wwwroot/css/style.css" asp-append-version="true"/>*@
+    <link rel="stylesheet" href="~/css/style.css"/>
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="container">
+            <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">Drive<span>Time</span></a>
+            <img id="mobile-cta" class="mobile-menu" src="images/menu.svg" alt="Open Navigation">
+            <nav>
+                <img id="mobile-exit" class="mobile-menu-exit" src="images/exit.svg" alt="Close Navigation">
+                    <ul class="primary-nav">
+                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Features">Features</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    </ul>
+                
+                    <ul class="secondary-nav">
+                         <li class="login-cta"><a asp-area="" asp-controller="Account" asp-action="Login">Log In</a></li>
+                    </ul>
+            </nav>
+            
+            </div>
+    </div>
+    
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2022 - Team22.Web - <a asp-area="" asp-controller="Home" asp-action="About">About</a>
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

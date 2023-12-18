@@ -1,0 +1,62 @@
+@using Team22.Web.Enums
+@model Team22.Web.Data.ITunesSearch 
+
+@{
+    Layout = "_SponsorDashboardLayout";
+    var catalogId = ViewBag.CatalogId;
+}
+
+@*
+    View for sponsors to add items to their catalog
+*@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Catalog</title>
+    @*<link rel="stylesheet" href="~/css/catalogsearch.css" />*@
+</head>
+<body>
+<div>
+    <div id="search">
+        <h1>Search ITunes </h1>
+        <form asp-controller="Catalog" asp-action="ApiSearch" method="get" id="searchForm">
+            <input type="hidden" name="catalogId" value="@catalogId" />
+            <select asp-for="ProductCategory" asp-items="Html.GetEnumSelectList<ProductCategory>()"
+                    id="category" name="category">
+            </select>
+            <input type="text" id="searchInput" name="search" placeholder="Search">
+            <input type="submit" value="Search"/>
+        </form>
+        
+        <a asp-controller="Catalog" asp-action="SponsorCatalog">Back</a>
+    </div>
+    
+    
+    @{
+        // depending on what category of item the user is searching for, render a partial view for
+        // displaying the results
+        if (ViewBag.Category == "Song")
+        {
+            await Html.RenderPartialAsync("SongSearchResult", Model.SongResult, this.ViewData);
+        }
+        else if (ViewBag.Category == "Album")
+        {
+            await Html.RenderPartialAsync("AlbumSearchResult", Model.AlbumResult, this.ViewData);
+            
+        }
+        else if (ViewBag.Category == "TvEpisode")
+        {
+            await Html.RenderPartialAsync("EpisodeSearchResult", Model.TvEpisodeListResult, this.ViewData);
+        }
+        else if (ViewBag.Category == "TvSeason")
+        {
+            await Html.RenderPartialAsync("SeasonSearchResult", Model.TvSeasonListResult, this.ViewData);
+        }
+    }
+    
+
+</div>
+</body>
+</html>

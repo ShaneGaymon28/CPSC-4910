@@ -1,0 +1,54 @@
+@model AppUser
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="~/css/view-account.css">
+</head>
+<body>
+<div id="main">
+
+    <h2>Profile</h2>
+
+    <form asp-action="Update" asp-route-id="@Model.UserName">
+        <div class="input-parent">
+            <label asp-for="FirstName" class=""></label>
+            <input asp-for="FirstName" />
+            
+            <label asp-for="LastName" class=""></label>
+            <input asp-for="LastName" />
+        </div>
+
+        <div class="input-parent">
+            <label asp-for="Email" class=""></label>
+            <input asp-for="Email" type="text" readonly />
+        </div>
+        
+        <!-- Password is special. Will do it later -->
+        
+
+    <div class="input-parent">
+        <label asp-for="UserRole" class=""></label>
+        <input asp-for="UserRole" readonly />
+    </div>
+        
+    <div>
+        <input type="submit" value="Update">
+    </div>
+        
+        <div>
+            <a asp-controller="Dashboard" asp-action="Index"><button type="button">Back</button></a>
+        </div>
+        
+
+    </form>
+    
+</div>
+</body>
+</html>

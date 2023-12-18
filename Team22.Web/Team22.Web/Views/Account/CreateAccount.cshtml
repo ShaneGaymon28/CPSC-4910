@@ -1,0 +1,92 @@
+@using Team22.Web.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Identity
+@model Team22.Web.ViewModels.RegisterViewModel
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Create Account";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveTime</title>
+    <link rel="stylesheet" href="~/css/createaccount.css">
+    <script src="https://kit.fontawesome.com/a555d879c2.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Create an Account</h1>
+    </div>
+
+    <form asp-controller="Account" asp-action="CreateAccount" method="post" class="form" id="form">
+        <div asp-validation-summary="All" class="text-danger">
+
+        </div>
+        <div class="form-control">
+            <label asp-for="FirstName">First Name</label>
+            <input type="text" placeholder="John" id="first-name" asp-for="FirstName">
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+
+        </div>
+
+        <div class="form-control">
+            <label asp-for="LastName">Last Name</label>
+            <input type="text" placeholder="Doe" id="last-name" asp-for="LastName">
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+
+        <div class="form-control">
+            <label asp-for="Email">Email</label>
+            <input type="text" placeholder="johndoe@gmail.com" id="email" asp-for="Email">
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+        
+        <div class="form-control">
+            <label asp-for="UserName">User Name</label>
+            <input type="text" placeholder="johndoe77" id="username" asp-for="UserName">
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+        </div> 
+
+        <div class="form-control">
+            <label asp-for="Password">Password</label>
+            <input type="password" placeholder="Password" id="password" asp-for="Password">
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+
+        <div class="form-control">
+            <label asp-for="ConfirmPassword">Confirm Password</label>
+            <input type="password" placeholder="Confirm Password" id="confirm-password" asp-for="ConfirmPassword">
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+
+        <div class="form-control">
+            <label asp-for="UserRole">Role</label>
+            <select id="user-role" asp-for="UserRole"
+                    asp-items="Html.GetEnumSelectList<UserRole>()">
+            </select>
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Error Message</span>
+        </div>
+
+        <button>Submit</button>
+        
+        
+    </form>
+</div>
+</body>
+</html>

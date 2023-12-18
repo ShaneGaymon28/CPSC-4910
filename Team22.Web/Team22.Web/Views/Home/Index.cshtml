@@ -1,0 +1,60 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Home";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDIP</title>
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+
+<section class="landing">
+    <div class="container">
+        <div class="left-col">
+            <h1 class="subhead">Drive<span>Time</span></h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit eius, incidunt non tempora minus praesentium rem excepturi distinctio explicabo facere.</p>
+
+            <div class="landing-cta">
+                <a class="create-account-cta" asp-area="" asp-controller="Account" asp-action="CreateAccount">Create an Account</a>
+                
+            </div>
+        </div>
+
+        <img src="~/images/truck.svg" class="landing-img" alt="Truck Image">
+    </div>
+    
+    <!-- <a asp-area="" asp-controller="Dashboard" asp-action="Index">Driver Dashboard Index</a>
+    <br/>
+    <a asp-area="" asp-controller="Dashboard" asp-action="SponsorIndex">Sponsor Dashboard Index</a>
+    <br/>
+    <a asp-area="" asp-controller="Dashboard" asp-action="AdminIndex">Admin Dashboard Index</a> -->
+</section>
+
+<script>
+
+        const mobileBtn = document.getElementById('mobile-cta')
+            nav = document.querySelector('nav')
+            mobileBtnExit = document.getElementById('mobile-exit')
+
+        mobileBtn.addEventListener('click', () => {
+            nav.classList.add('menu-btn');
+        })
+
+        mobileBtnExit.addEventListener('click', () => {
+            nav.classList.remove('menu-btn');
+        })
+
+
+    </script>
+</body>
+</html>

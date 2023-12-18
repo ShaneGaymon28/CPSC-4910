@@ -1,0 +1,54 @@
+@model Application
+
+@{
+    Layout = null;
+    
+}
+
+@* 
+    Need to update HTML
+*@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>View Application</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="User.FirstName" class="control-label"></label>
+                <input asp-for="User.FirstName" class="form-control" />
+                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.LastName" class="control-label"></label>
+                <input asp-for="User.LastName" class="form-control" />
+                <span asp-validation-for="User.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Email" class="control-label"></label>
+                <input asp-for="User.Email" class="form-control" />
+                <span asp-validation-for="User.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sponsor.Name" class="control-label"></label>
+                <input asp-for="Sponsor.Name" class="form-control" />
+                <span asp-validation-for="Sponsor.Name" class="text-danger"></span>
+            </div>
+            
+        </form>
+    </div>
+</div>
+</body>
+</html>

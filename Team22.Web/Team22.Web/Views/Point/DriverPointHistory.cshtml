@@ -1,0 +1,50 @@
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model List<Point>
+
+@{
+    Layout = "_DashboardLayout";
+    var curPoints = ViewBag.CurrentPoints != null ? ViewBag.CurrentPoints : 0;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Point History</title>
+    <link rel="stylesheet" href="~/css/driverlanding.css" />
+</head>
+<body>
+<div>
+    <section class="landing">
+        <div class="recent-point-table">
+            <div class="container">
+                <h3>My Point History - Current Points: @curPoints</h3>
+                <table class="point-table">
+                    <tr>
+                        <th>Point Change</th>
+                        <th>Total Points</th>
+                        <th>Date</th>
+                        <th>Comment</th>
+                        <th>Sponsor Organization</th>
+                    </tr>
+                    @if (Model != null)
+                    {
+                        @foreach (var change in Model)
+                        {
+                            <tr>
+                                <td>@change.DeltaPoints</td>
+                                <td>@change.CurrentPoints</td>
+                                <td>@change.Date</td>
+                                <td>@change.Reason</td>
+                                <td>@change.SponsorOrg</td>
+                            </tr>
+                        }
+                    }
+                    
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

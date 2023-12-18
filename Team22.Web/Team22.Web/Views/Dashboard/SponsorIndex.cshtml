@@ -1,0 +1,31 @@
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    Layout = "_SponsorDashboardLayout";
+    ViewData["Title"] = "Dashboard";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Sponsor Dashboard</title>
+    <link rel="stylesheet" href="~/css/sponsorlanding.css"/>
+</head>
+<body>
+<h2>SPONSOR DASHBOARD</h2>
+<section class="landing">
+    <div class="container">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <h1 class="subhead">Welcome <span class="name" id="driver-name">@UserManager.GetUserName(User)!</span></h1>
+        }
+        <p>Just a test.</p>
+
+    </div>
+</section>
+</body>
+</html>

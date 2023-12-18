@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:ital,wght@0,400;0,600;1,500&display=swap');
+
+:root {
+    --primary-color: #1BBA1A;
+}
+
+body {
+    background: #FFFFFF;
+    margin: 0;
+    font-family: 'Poppins', serif;
+}
+
+.navbar {
+    background: #FFFFFF;
+    padding: 16px 32px 10px 32px;
+}
+
+.navbar .logo {
+    text-decoration: none;
+    font-weight: 700;
+    color: black;
+    font-size: 1.2em;
+    font-style: italic;
+    padding-left: 5em;
+}
+
+.navbar .logo span {
+    color: var(--primary-color);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar .mobile-menu {
+    cursor: pointer;
+}
+
+a {
+    color: #444444;
+    text-decoration: none;
+}
+
+.primary-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-nav li {
+    display: inline;
+    padding-right: 15px;
+    font-size: 10pt;
+    padding-bottom: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444444;
+    min-width: 200px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left: -50px;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: #F2F2F2;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover{
+    color: var(--primary-color);
+}
+
+.profile-cta:hover .dropdown-content {
+    display: block;
+}
+
+.cart-img {
+    width: 25px;
+    height: auto;
+    float: right;
+    padding-right: 8em;
+}
+
+.profile-img {
+    width: 25px;
+    height: auto;
+    padding-left: 115px;
+}
+
+.logout-button {
+    border: none;
+    background: none;
+    color: #F2F2F2;
+    font-family: 'Poppins', serif;
+    padding: 0;
+}
+
+.logout-button:hover {
+    color: var(--primary-color);
+}
+
+.username-stamp{
+    text-transform: uppercase;
+    padding: 0;
+    margin-top: 0;
+    vertical-align: super;
+}

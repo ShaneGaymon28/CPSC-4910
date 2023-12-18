@@ -1,0 +1,109 @@
+@using Team22.Web.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Identity
+@model AppUser
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@{
+    Layout = "_SponsorDashboardLayout";
+    ViewData["Title"] = "Dashboard";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Account Information</title>
+    <link rel="stylesheet" href="~/css/sponsoraccount.css"/>
+</head>
+<body>
+<section class="landing">
+    <div class="organization-name">
+    </div>
+    <div class="column-holder">
+        <div class="left-column">
+            <h2>My Current Information</h2>
+    
+            <div class="form-control">
+                <label asp-for="@Model.FirstName">First Name</label>
+                <input id="ogFirstName"asp-for="@Model.FirstName" readonly />
+            </div>
+
+            <div class="form-control">
+                <label asp-for="@Model.LastName">Last Name</label>
+                <input id="ogLastName" asp-for="@Model.LastName" readonly />
+            </div>
+
+            <div class="form-control">
+                <label asp-for="@Model.Email">Email</label>
+                <input id="ogEmail" asp-for="@Model.Email" readonly />
+            </div>
+                
+            <div class="form-control">
+                <label asp-for="@Model.UserRole">User Role</label>
+                <input id="ogUserRole" asp-for="@Model.UserRole" readonly />
+            </div>
+                
+            <div class="form-control">
+                <label asp-for="@Model.UserName">User Name</label>
+                <input id="ogUserName"asp-for="@Model.UserName" readonly />
+            </div>
+
+
+        </div>
+    
+        <div class="right-column">
+            <h2>Update Information</h2>
+    
+            <form asp-controller="Account" asp-action="Update" method="post" class="form" id="form">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-control">
+                    <label asp-for="FirstName">First Name</label>
+                    <input id="first-name" type="text" placeholder="@Model.FirstName" asp-for="FirstName"/>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+        
+                <div class="form-control">
+                    <label asp-for="LastName">Last Name</label>
+                    <input id="last-name" type="text" placeholder="@Model.LastName" asp-for="LastName"/>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+        
+                <div class="form-control">
+                    <label asp-for="Email">Email</label>
+                    <input id="email" type="text" placeholder="@Model.Email" asp-for="Email"/>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+                    
+                <div class="form-control">
+                    <label asp-for="UserRole">User Role</label>
+                    <input id="userRole" type="text" placeholder="@Model.UserRole" asp-for="UserRole" readonly/>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+                    
+                <div class="form-control">
+                    <label asp-for="UserName">User Name</label>
+                    <input id="userName" type="text" placeholder="@Model.UserName" asp-for="UserName" readonly/>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+                <button type="submit" value="submit">Submit</button>
+            </form>
+    
+        </div>
+
+    </div>
+        
+</section>
+    <script src="~/js/driveraccount.js"></script> 
+</body>
+</html>

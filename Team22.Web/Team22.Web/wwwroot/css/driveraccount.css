@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:ital,wght@0,400;0,600;1,500&display=swap');
+
+:root {
+    --primary-color: #1BBA1A;
+}
+
+body {
+    background: #dfe6e9;
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+section {
+    padding: 2em 4em;
+}
+
+.column-holder {
+    margin: 0 auto;
+    display: table;
+}
+
+.left-column {
+    display: inline-block;
+    padding: 2em;
+    vertical-align: top;
+}
+
+.left-column p {
+    margin: 11px 0;
+}
+
+.right-column {
+    display: inline-block;
+    padding: 2em;
+}
+
+.form {
+    padding: 30px 0;
+    padding-top: 0;
+}
+
+.form-control {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input {
+    border: 2px solid #F2F2F2;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-control select {
+    border: 2px solid #F2F2F2;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-control.organization {
+    display: none;
+}
+
+.form-control.success input {
+    border-color: var(--primary-color);
+}
+
+.form-control.error input {
+    border-color: #E74C3C;
+}
+
+.form-control.warning input {
+    border-color: #2d3436;
+}
+
+.form-control i {
+    position: absolute;
+    visibility: hidden;
+    top: 40px;
+    right: 10px;
+}
+
+.form-control.success i.fa-check-circle {
+    color: var(--primary-color);
+    visibility: visible;
+}
+
+.form-control.error i.fa-circle-exclamation {
+    color: #E74C3C;
+    visibility: visible;
+}
+
+.form-control.warning i.fa-circle-exclamation {
+    color: #2d3436;
+    visibility: visible;
+}
+
+.form-control small {
+    position: absolute;
+    visibility: hidden;
+    bottom: 0;
+    left: 0;
+}
+
+.form-control.error small {
+    color: #E74C3C;
+    visibility: visible;
+}
+
+.form-control.warning small {
+    color: #2d3436;
+    visibility: visible;
+}
+
+.form-control.success small {
+    color: var(--primary-color);
+    visibility: visible;
+}
+
+.form button {
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    color: #F2F2F2;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+}
+
+.name-header {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: -40px;
+    color: var(--primary-color);
+}

@@ -1,0 +1,100 @@
+@using Team22.Web.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Identity
+@model Team22.Web.ViewModels.RegisterViewModel
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    Layout = "_DashboardLayout";
+}
+
+@* 
+    This view is for the admin create account ability
+    
+    ** if the user selects driver, they must assign a sponsor to that driver
+*@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="~/css/createaccount.css">
+    <script src="https://kit.fontawesome.com/a555d879c2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Admin Create Account</h2>
+    </div>
+    
+    <form asp-controller="Account" asp-action="CreateAccount" method="post" class="form" id="form">
+        <div class="input-parent">
+            <label asp-for="FirstName"></label>
+            <input type="text" id="first-name" placeholder="John" asp-for="FirstName" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <small>Error Message</small>
+        </div>
+
+        <div class="input-parent">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" id="last-name" placeholder="Doe" type="text"/>
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <small>Error Message</small>
+        </div>
+
+        <div class="input-parent">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" id="email" type="text"/>
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <small>Error Message</small>
+        </div>
+        
+        <div class="input-parent">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" type="password" id="password"/>
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <small>Error Message</small>
+        </div>
+        
+        <div class="input-parent">
+            <label asp-for="ConfirmPassword">Confirm Password</label>
+            <input type="password" id="confirm-password" asp-for="ConfirmPassword"/>
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <small>Error Message</small>
+        </div>
+        
+        <div class="input-parent">
+            <label asp-for="UserRole"></label>
+            <select asp-for="UserRole"
+                    asp-items="Html.GetEnumSelectList<UserRole>()" id="user-role">
+            </select>
+            <i class="fas fa-check-circle"></i>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <small>Error Message</small>
+        </div>
+        
+        <div>
+            @*<button type="submit">Create Account</button>*@
+            @*<button onclick="checkInputs();">Create Account</button>*@
+            <input type="submit" name="submit" formmethod="post" value="Create">
+
+        </div>
+        
+        <div>
+            <a asp-controller="User" asp-action="Index"><button type="button">Back</button></a>
+        </div>
+    
+    </form>
+</div>
+@*<script src="~/js/create-account.js"></script>*@
+</body>
+</html>

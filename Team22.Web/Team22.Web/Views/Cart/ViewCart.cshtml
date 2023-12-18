@@ -1,0 +1,41 @@
+@model List<CartItem>
+
+@{
+    Layout = "_DashboardLayout";
+    double totalPointCost = 0;
+    double totalDollarCost = 0;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Cart</title>
+</head>
+<body>
+<div>
+    <h1>View Cart</h1>
+    
+    @{
+        foreach (var item in Model)
+        {
+            totalPointCost += item.Product.PointPrice;
+            totalDollarCost += item.Product.DollarPrice;
+            
+            <div class="product">
+                <input type="text" asp-for="@item.Product.Name" readonly/>
+                <input type="text" asp-for="@item.Product.PointPrice" readonly/>
+            </div>
+            
+            <a asp-controller="Cart" asp-action="RemoveFromCart" asp-route-cartItemId="@item.Id">Remove</a>
+        }
+    }
+    
+    <p>Total Point Cost = @totalPointCost</p>
+    <p>Total Dollar ($) Cost = @totalDollarCost</p>
+    
+    <a onclick="javascript:history.back()">Back</a>
+
+</div>
+</body>
+</html>

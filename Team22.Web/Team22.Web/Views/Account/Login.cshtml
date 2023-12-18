@@ -1,0 +1,82 @@
+@model LoginViewModel
+@using Microsoft.AspNetCore.Identity
+@using Team22.Web.ViewModels
+@inject SignInManager<AppUser> SignInManager
+@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+
+
+<body>
+
+
+<!------- login script ---->
+
+@{
+    ViewBag.Title = "Index";
+}
+<script language="javascript">
+
+    function containsSpecialChars(str) {
+  const specialChars = /[`!@@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  return specialChars.test(str);
+}
+
+function display() {
+    if ($("#username").attr("value") == "") {
+        alert("Please Enter your UserName.");
+        return false;
+    } else if ($("#password").attr("value") == "") {
+        alert("Please enter UserPassword.");
+        return false;
+    }
+        if (!/\d/.test("#password")) { //check if password contains a number
+            document.getElementById("#password").innerHTML = "must contain a number";
+        alert("password must contain a number.");
+        return false;
+    }
+    if (containsSpecialChars(#password) === false) { //check if password contains a special character
+        alert("password must contain a special character.");
+        return false;
+    }
+    alert("Login Successfully");
+    return true;
+}
+</script>
+
+<!--- login script ----->
+
+
+<!--login form -->
+<form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" id="main">
+    <h2>Login to your account</h2>
+
+    <div class="input-parent">
+        <label asp-for="UserName">Username</label>
+        <input type="text" id="username" asp-for="UserName">
+    </div>
+
+    <div class="input-parent">
+        <label asp-for="Password">Password</label>
+        <input type="password" id="password" asp-for="Password">
+    </div>
+
+    <button type="submit" onclick=" display();">Login</button>
+
+    <label>Forgot <a asp-area="" asp-controller="Account" asp-action="ForgotPassword"> password?</a></label>
+
+</form>
+
+</body>
+</html>

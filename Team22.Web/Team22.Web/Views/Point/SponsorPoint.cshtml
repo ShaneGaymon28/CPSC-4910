@@ -1,0 +1,45 @@
+@model List<SponsorUserBridge>
+
+@{ 
+    Layout = "_SponsorDashboardLayout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Points</title>
+</head>
+<body>
+<div>
+
+    <div>
+        <h3>Associated Drivers</h3>
+        <table>
+            <tr>
+                <th>Driver</th>
+                <th>Current Points</th>
+                <th>Point Change</th>
+                <th>Reason</th>
+            </tr>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <form asp-controller="Point" asp-action="AddPointChange" method="post">
+                        <td>@user.AppUser.FirstName @user.AppUser.LastName</td>
+                        <td>@user.Points</td>
+
+                        <td><input type="number" name="pointChange"/></td>
+                        <td><input type="text" name="reason"/></td>
+                        <input type="hidden" name="driverId" value="@user.AppUser.Id" />
+                        <input type="hidden" name="currentPoints" value="@user.Points" />
+                        <td><input type="submit" value="submit" /></td>
+                    </form>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

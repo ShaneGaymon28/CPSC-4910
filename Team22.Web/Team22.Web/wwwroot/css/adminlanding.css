@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:ital,wght@0,400;0,600;1,500&display=swap');
+
+:root {
+    --primary-color: #1BBA1A;
+}
+
+body {
+    background: #dfe6e9;
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+section {
+    padding: 2em 2em;
+}
+

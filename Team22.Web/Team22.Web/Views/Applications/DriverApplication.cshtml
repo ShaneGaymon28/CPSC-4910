@@ -1,0 +1,135 @@
+@using Team22.Web.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore.Metadata
+@model List<Application>
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Dashboard";
+    List<Application> apps = ViewData["Apps"] as List<Application>;
+}
+
+@*
+    View for drivers to see their applications
+*@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Applications</title>
+    <link rel="stylesheet" href="~/css/driverapplication.css"/>
+</head>
+<body>
+<section>
+    <div class="left-column">
+        <h2>Sponsor Application</h2>
+        <form asp-controller="Applications" asp-action="Add" method="post" class="form">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-control">
+                <label>First Name</label>
+                <input name="firstName" type="text" id=""/>
+            </div>
+
+            <div class="form-control">
+                <label>Last Name</label>
+                <input name="lastName" type="text" id=""/>
+            </div>
+
+            <div class="form-control">
+                <label>Company</label>
+                <input name="company" type="text" id=""/>
+            </div>
+
+            <div class="form-control">
+                <label>Reason</label>
+                <input name="reason" type="text" id=""/>
+            </div>
+
+            <button type="submit" value="submit">Submit</button>
+        </form>
+    </div>
+    
+    <div class="right-column">
+        
+        <div class="current-sponsors-table">
+            <h2>My Current Sponsors</h2>
+            <table>
+                <tr>
+                    <th>Company</th>
+                    <th>Exchange Rate</th>
+                    <th>Status</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    @if (item.Status == ApplicationStatus.Accepted)
+                    {
+                        <tr>
+                            <td><a>@item.Sponsor.Name</a></td>
+                            <td><a>@item.Sponsor.PointDollarRatio</a></td>
+                            <td><a>@item.Status</a></td>
+                            <form asp-controller="Sponsor" asp-action="DropSponsor" method="post">
+                                <td>
+                                    <input type="text" name="comment"/>
+                                </td>
+                                <td><button type="submit" asp-controller="Sponsor" asp-action="DropSponsor" asp-route-appId="@item.Id">Drop</button></td>
+                            </form>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        
+        <div class="pending-applications">
+            <table>
+                <h2>Pending Applications</h2>
+                <tr>
+                    <th>Company</th>
+                    <th>Exchange Rate</th>
+                    <th>Status</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    @if (item.Status == ApplicationStatus.Pending)
+                    {
+                        <tr>
+                            <td><a>@item.Sponsor.Name</a></td>
+                            <td><a>@item.Sponsor.PointDollarRatio</a></td>
+                            <td><a>@item.Status</a></td>
+                            <form asp-controller="Sponsor" asp-action="DropSponsor" method="post">
+                                <td>
+                                    <input type="text" name="comment"/>
+                                </td>
+                                <td><button type="submit" asp-controller="Sponsor" asp-action="DropSponsor" asp-route-appId="@item.Id">Drop</button></td>
+                            </form>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        
+        <div class="all-sponsors">
+            <table>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+    
+</section>
+</body>
+</html>

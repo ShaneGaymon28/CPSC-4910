@@ -1,0 +1,58 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/dashboardlayout.css"/>
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <div class="container">
+            <a class="logo" asp-area="" asp-controller="Dashboard" asp-action="AdminIndex">Drive<span>Time</span></a>
+        
+            <ul class="primary-nav">
+                <li class="profile-cta">
+                    <a href="">
+                        <img class="profile-img" src="~/images/profile.svg" alt="">
+                    </a>
+                    <div class="dropdown-content">
+                        <a asp-area="" asp-controller="Account" asp-action="AdminAccount">My Account</a>
+                        <a asp-area="" asp-controller="User" asp-action="Index">All Users</a>
+                        <a asp-area="" asp-controller="Applications" asp-action="AdminApplication">Applications</a>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <a>
+                                <form id="logoutForm" method="post" class="form-inline" asp-controller="Account"
+                                      asp-action="LogOff">
+                                    <button type="submit" class="logout-button">Log Off</button>
+                                </form>
+                            </a>
+                        }
+                    </div>
+                </li>
+                <li class="username-stamp">
+                    <a asp-controller="Dashboard" asp-action="AdminIndex">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            @UserManager.GetUserName(User)
+                        }
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+﻿.DS_Store
+
+.idea/.idea.Team22.Api/.idea/
+
+Team22.Api/obj/Debug/net6.0/Team22.Api.GeneratedMSBuildEditorConfig.editorconfig
+
+Team22.Api/obj/Debug/net6.0/
+
+Team22.Api/obj/
+
+/.vs

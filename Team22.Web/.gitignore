@@ -1,0 +1,14 @@
+
+.DS_Store
+
+.idea/.idea.Team22.Web/.idea/
+
+Team22.Web/obj/Debug/net6.0/Team22.Web.GeneratedMSBuildEditorConfig.editorconfig
+
+Team22.Web/obj/Debug/net6.0/
+
+Team22.Web/obj/
+
+Team22.Web/bin/
+
+/.vs

@@ -1,0 +1,110 @@
+@using Team22.Web.Enums
+@model List<Application>
+
+@{
+    Layout = "_AdminDashboardLayout";
+    ViewData["Title"] = "Dashboard";
+    var pending = Model.Where(a => a.Status == ApplicationStatus.Pending).OrderBy(a => a.SponsorId);
+    var approved = Model.Where(a => a.Status == ApplicationStatus.Accepted).OrderBy(a => a.SponsorId);
+    var rejected = Model.Where(a => a.Status == ApplicationStatus.Rejected).OrderBy(a => a.SponsorId);
+}
+
+@*
+    View to show applications for an admin
+*@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Applications</title>
+    <link rel="stylesheet" href="~/css/sponsorapplication.css"/>
+</head>
+<body>
+@* Change this line, will prob cause errors at some point *@
+<section>
+    <div>
+        <h2>Pending Applications</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                @if (item.Status == ApplicationStatus.Pending)
+                {
+                    <tr>
+                        <td><a>@item.User.FirstName</a></td>
+                        <td><a>@item.User.LastName</a></td>
+                        <td><a>@item.User.Email</a></td>
+                        <td><a>@item.Sponsor.Name</a></td>
+                        <td><a>@item.Reason</a></td>
+                        <form asp-controller="Applications" method="post">
+                            <td>
+                                <input type="text" name="comment"/>
+                            </td>
+                            <td><button type="submit" asp-action="ApproveApplication" asp-route-appId="@item.Id">Approve</button></td>
+                            <td><button type="submit" asp-action="RejectApplication" asp-route-appId="@item.Id">Reject</button></td>
+                        </form>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <div>
+        <h2>Accepted Drivers</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                @if (item.Status == ApplicationStatus.Accepted)
+                {
+                    <tr>
+                        <td><a>@item.User.FirstName</a></td>
+                        <td><a>@item.User.LastName</a></td>
+                        <td><a>@item.User.Email</a></td>
+                        <td><a>@item.Sponsor.Name</a></td>
+                        <form asp-controller="Sponsor" asp-action="DropDriver" method="post">
+                            <td>
+                                <input type="text" name="comment"/>
+                            </td>
+                            <td><button type="submit" asp-controller="Sponsor" asp-action="DropDriver" asp-route-appId="@item.Id">Drop</button></td>
+                        </form>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <div>
+        <h2>Rejected/Dropped Drivers</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                @if (item.Status == ApplicationStatus.Rejected)
+                {
+                    <tr>
+                        <td><a>@item.User.FirstName</a></td>
+                        <td><a>@item.User.LastName</a></td>
+                        <td><a>@item.User.Email</a></td>
+                        <td><a>@item.Sponsor.Name</a></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</section>
+</body>
+</html>

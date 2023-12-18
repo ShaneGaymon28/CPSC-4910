@@ -1,0 +1,52 @@
+@model List<Team22.Web.Models.Application>
+
+@{
+    Layout = null;
+}
+
+@*
+    View to show all applications in the DB
+*@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Applications</title>
+</head>
+<body>
+<div>
+    <h1>Applications</h1>
+    
+    <div>
+        <a asp-area="" asp-controller="Applications" asp-action="Apply">Add an application</a>
+    </div>
+    
+        @foreach (var item in Model)
+        {
+            <div>
+                @Html.LabelFor(a => item.Id)
+                @Html.DisplayFor(a => item.Id)
+                
+                @Html.LabelFor(a => item.UserId)
+                @Html.DisplayFor(a => item.UserId)
+                
+                @Html.LabelFor(a => item.User.FirstName)
+                @Html.DisplayFor(a => item.User.FirstName)
+                
+                @Html.LabelFor(a => item.User.LastName)
+                @Html.DisplayFor(a => item.User.LastName)
+                
+                @Html.LabelFor(a => item.Status)
+                @Html.DisplayFor(a => item.Status)
+            </div>
+            
+            <div>
+                <a asp-action="ViewApplication" asp-route-id="@item.Id">View Application</a>
+            </div>
+        }
+
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:ital,wght@0,400;0,600;1,500&display=swap');
+
+:root {
+    --primary-color: #1BBA1A;
+}
+
+body {
+    background: #dfe6e9;
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+.users-div {
+    margin: auto;
+    text-align: center;
+}
+
+.users-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+}
+
+.users-table td, .users-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.users-table tr:nth-child(even){
+    background-color: #ddd;
+}
+
+.users-table tr:hover {
+    background-color: #bdc3c7;
+}
+
+.users-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: #F2F2F2;
+}
+
+.users-table a {
+    text-decoration: none;
+    color: black;
+}

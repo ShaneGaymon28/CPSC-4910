@@ -1,0 +1,61 @@
+@model Catalog
+
+@{
+    Layout = "_DashboardLayout";
+    var curPoints = ViewBag.CurrentPoints != null ? ViewBag.CurrentPoints : 0;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Catalog</title>
+    <link rel="stylesheet" href="~/css/catalog.css" />
+</head>
+<body>
+<div>
+    <h1>Catalog</h1>
+    <h1>Current Points - @curPoints</h1>
+    
+    <button class="btn"><a asp-controller="Dashboard" asp-action="Index">Back to Dashboard</a></button>
+    <br /><br />
+    <div class="grid-container">
+        @if (Model != null)
+        {
+            @foreach (var product in Model.Products)
+            {
+                <div class="grid-item">
+                    <div>
+                        <img src="@product.ArtworkURL" class="artwork" alt="Product artwork"/><br/>
+                    </div>
+                    <div class="productFieldDiv">
+                        @*<label>Product Name:</label>*@
+                        <input type="text" asp-for="@product.Name" readonly/>
+                    </div>
+                    <div class="productFieldDiv">
+                        @*<label>Collection Name:</label>*@
+                        <input type="text" asp-for="@product.CollectionName" readonly/>
+                    </div>
+                    <div class="productFieldDiv">
+                        <label>$ Price:</label>
+                        <input type="text" asp-for="@product.DollarPrice" readonly/>
+                    </div>
+                    <div class="productFieldDiv">
+                        <label>Point Price:</label>
+                        <input type="text" asp-for="@product.PointPrice" readonly/>
+                    </div>
+                    <div class="productFieldDiv">
+                        <label>Category:</label>
+                        <input type="text" asp-for="@product.ProductCategory" readonly/>
+                    </div>
+
+                    <button class="btn"><a asp-controller="Cart" asp-action="AddToCart" asp-route-productId="@product.Id">Add to Cart</a></button>
+
+                </div>
+            }
+        }
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+@model Catalog
+
+@{
+    Layout = "_SponsorDashboardLayout";
+}
+@*
+    View to display the sponsor's catalog information
+*@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Sponsor Catalog</title>
+    <link rel="stylesheet" href="" />
+</head>
+<body>
+<div>
+    <div>
+        <a asp-controller="Catalog" asp-action="SponsorAdd" asp-route-catalogId="@Model.Id" >Add items to catalog</a>
+    </div>
+    
+    <div id="products">
+        
+        @foreach (var product in Model.Products)
+        {
+            <div id="productElement">
+                <img src="@product.ArtworkURL" alt="Product artwork"/>
+                <label>@product.Name, </label>
+                <label>@product.CollectionName,</label>
+                <label>@product.DollarPrice</label>
+                    
+                <a asp-controller="Catalog" asp-action="RemoveFromCatalog" asp-route-productId="@product.Id">Remove</a>
+            </div>
+        }
+        
+    </div>
+
+</div>
+</body>
+</html>

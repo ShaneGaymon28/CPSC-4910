@@ -1,0 +1,39 @@
+@model iTunesSearch.Library.Models.AlbumResult
+
+@*
+    Partial View for the results of an album search
+    
+    SponsorAdd will render this page if the user searches for an album
+*@
+
+@{
+    var catalogId = ViewBag.CatalogId;
+}
+
+<h1>Search Results - Album </h1>
+
+<div>
+    @foreach (var item in Model.Albums)
+        {
+            <div id="albumElement">
+                <form asp-controller="Catalog" asp-action="AddAlbum" method="post" id="form">
+                    @if (item.ArtworkUrl100 != null)
+                    {
+                        <img src="@item.ArtworkUrl100" alt="Album Artwork" />                    
+                    }
+                    
+                    <input type="text" asp-for="@item.CollectionName" name="CollectionName" readonly />
+                    <input type="text" asp-for="@item.ArtistName" name="ArtistName" readonly />
+                    <input type="text" asp-for="@item.CollectionPrice" name="CollectionPrice" readonly />
+                    <input type="text" asp-for="@item.PrimaryGenreName" name="PrimaryGenreName" readonly />
+                    
+                    <input type="hidden" asp-for="@item.CollectionId" name="CollectionId" />
+                    <input type="hidden" asp-for="@item.ArtistId" name="ArtistId" />
+                    <input type="hidden" asp-for="@item.ArtworkUrl100" name="ArtworkUrl100" />
+                    
+                    <input type="hidden" name="catalogId" value="@catalogId" />
+                    <input type="submit" value="Add to Catalog"/>
+                </form>
+            </div>
+        }
+</div>

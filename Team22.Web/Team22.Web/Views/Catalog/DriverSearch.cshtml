@@ -1,0 +1,31 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model string
+
+@{
+    Layout = "_DashboardLayout";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href=""/>
+</head>
+<body>
+<div>
+    <section class="landing">
+        <form asp-controller="Catalog" asp-action="SearchCatalog" method="get" id="form"> 
+            <input type="text" name="search" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+        
+        <ul>
+            <li>
+                Value: @Model
+            </li>
+        </ul>
+    </section>
+</div>
+</body>
+</html>

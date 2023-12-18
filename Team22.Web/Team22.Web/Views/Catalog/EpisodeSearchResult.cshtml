@@ -1,0 +1,45 @@
+@model iTunesSearch.Library.Models.TVEpisodeListResult
+
+@* 
+    Partial View for the results of a TV Episode search
+    
+    SponsorAdd will render this page if the user searches for an episode
+    
+*@
+
+@{
+    var catalogId = ViewBag.CatalogId;
+}
+
+<h1>Search Results - Tv Episode </h1>
+
+<div>
+    @foreach (var item in Model.Episodes)
+    {
+        <div id="episodeElement">
+            <form asp-controller="Catalog" asp-action="AddEpisode" method="post" id="form">
+                @if (item.ArtworkUrl != null)
+                {
+                    <img src="@item.ArtworkUrl" alt="Episode Artwork" />                    
+                }
+                
+                @* might be done, not sure yet *@
+                <input type="text" asp-for="@item.Name" name="Name" readonly />
+                <input type="text" asp-for="@item.ShowName" name="ShowName" readonly />
+                <input type="text" asp-for="@item.SeasonName" name="SeasonName" readonly />
+                <input type="text" asp-for="@item.Price" name="Price" readonly />
+                
+                <input type="hidden" asp-for="@item.ShowId" name="ShowId" />
+                <input type="hidden" asp-for="@item.EpisodeId" name="EpisodeId" />
+                <input type="hidden" asp-for="@item.ArtworkUrl" name="ArtworkUrl" />
+
+                <input type="hidden" name="catalogId" value="@catalogId" />
+                <input type="submit" value="Add to Catalog"/>
+
+            </form>
+        </div>
+        
+    }
+
+</div>
+

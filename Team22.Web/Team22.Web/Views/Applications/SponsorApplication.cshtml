@@ -1,0 +1,111 @@
+@using Team22.Web.Enums
+@using System.ComponentModel
+@using Microsoft.AspNetCore.Razor.Language
+@model List<Application>
+
+@{
+    Layout = "_SponsorDashboardLayout";
+    ViewData["Title"] = "Dashboard";
+}
+
+@*
+    View to show applications for a given sponsor
+*@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications</title>
+    <link rel="stylesheet" href="~/css/sponsorapplication.css"/>
+    @* can't get script to require comments to work properly
+    <script src="~/js/sponsor-application.js"></script>
+    <script src="https://kit.fontawesome.com/a555d879c2.js" crossorigin="anonymous"></script>*@
+</head>
+<body>
+<section>
+    <div>
+        <h2>Pending Applications</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                @if (item.Status == ApplicationStatus.Pending)
+                {
+                    <tr>
+                        <td><a>@item.User.FirstName</a></td>
+                        <td><a>@item.User.LastName</a></td>
+                        <td><a>@item.User.Email</a></td>
+                        <td><a>@item.Reason</a></td>
+                        <form asp-controller="Applications" method="post">
+                            <td>
+                                <input type="text" name="comment"/>
+                            </td>
+                            <td><button type="submit" asp-action="ApproveApplication" asp-route-appId="@item.Id">Approve</button></td>
+                            <td><button type="submit" asp-action="RejectApplication" asp-route-appId="@item.Id">Reject</button></td>
+                        </form>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div>
+        <h2>My Drivers</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                @if (item.Status == ApplicationStatus.Accepted)
+                {
+                    <tr>
+                        <td><a>@item.User.FirstName</a></td>
+                        <td><a>@item.User.LastName</a></td>
+                        <td><a>@item.User.Email</a></td>
+                        <form asp-controller="Sponsor" asp-action="DropDriver" method="post">
+                            <td>
+                                <input type="text" name="comment"/>
+                            </td>
+                            <td><button type="submit" asp-controller="Sponsor" asp-action="DropDriver" asp-route-appId="@item.Id">Drop</button></td>
+                        </form>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    <div>
+        <h2>Rejected/Dropped Drivers</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                @if (item.Status == ApplicationStatus.Rejected)
+                {
+                    <tr>
+                        <td><a>@item.User.FirstName</a></td>
+                        <td><a>@item.User.LastName</a></td>
+                        <td><a>@item.User.Email</a></td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+    
+    
+</section>
+</body>
+</html>

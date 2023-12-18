@@ -1,0 +1,100 @@
+@using Team22.Web.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model AppUser
+
+@{
+    Layout = "_AdminDashboardLayout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>View User</title>
+    <link rel="stylesheet" href="~/css/driveraccount.css">
+</head>
+<body>
+<section class="landing">
+    <div class="column-holder">
+        <h2 class="name-header">@Model.FirstName @Model.LastName</h2>
+        <div class="left-column">
+            <h2>My Current Information</h2>
+            <div class="form-control">
+                <label asp-for="@Model.FirstName">First Name</label>
+                <input id="ogFirstName"asp-for="@Model.FirstName" readonly/>
+            </div>
+
+            <div class="form-control">
+                <label asp-for="@Model.LastName">Last Name</label>
+                <input id="ogLastName" asp-for="@Model.LastName" readonly/>
+            </div>
+
+            <div class="form-control">
+                <label asp-for="@Model.Email">Email</label>
+                <input id="ogEmail" asp-for="@Model.Email" readonly/>
+            </div>
+
+            <div class="form-control">
+                <label asp-for="@Model.UserRole">User Role</label>
+                <input id="ogUserRole" asp-for="@Model.UserRole" readonly/>
+            </div>
+
+            <div class="form-control">
+                <label asp-for="@Model.UserName">User Name</label>
+                <input id="ogUserName"asp-for="@Model.UserName" readonly/>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <h2>Update Information</h2>
+
+            <form asp-controller="User" asp-action="Update" method="post" class="form" id="form">
+
+                <div class="form-control">
+                    <label asp-for="FirstName">First Name</label>
+                    <input type="text" placeholder="John" id="first-name" asp-for="FirstName">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+
+                <div class="form-control">
+                    <label asp-for="LastName">Last Name</label>
+                    <input type="text" placeholder="Doe" id="last-name" asp-for="LastName">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+
+                <div class="form-control">
+                    <label asp-for="Email">Email</label>
+                    <input type="text" placeholder="johndoe@gmail.com" id="email" asp-for="Email">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+
+                <div class="form-control">
+                    <label>User Role</label>
+                    <input type="text" placeholder="User Role" id="userRole" asp-for="UserRole" readonly>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+                
+                <div class="form-control">
+                    <label asp-for="UserName">User Name</label>
+                    <input id="userName" type="text" placeholder="@Model.UserName" asp-for="UserName" readonly/>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error Message</small>
+                </div>
+
+                <button type="submit" value="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+    <script src="~/js/driveraccount.js"></script> 
+</body>
+</html>

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:ital,wght@0,400;0,600;1,500&display=swap');
+
+:root {
+    --primary-color: #1BBA1A;
+}
+
+body {
+    background: #dfe6e9;
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+section {
+    padding: 2em 4em;
+}
+
+h4 {
+    font-style: italic;
+    font-size: 22pt;
+    margin: 0;
+    padding: 20px 0;
+    padding-top: 0;
+}
+
+.sponsors-list {
+    margin: 0;
+    padding: 0;
+}
+
+.sponsors-list li {
+    list-style: none;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size: 14pt;
+}
+
+.sponsors-list li a {
+    text-decoration: none;
+    padding-right: 2em;
+}
+
+.apply-button {
+    color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    font-weight: bold;
+    border-radius: 5em;
+    margin-top: -.2em;
+    padding: .1em 2em;
+    text-decoration: none;
+    font-size: 12pt;
+}
+
+.apply-button:hover {
+    background: var(--primary-color);
+    color: white;
+}

@@ -1,0 +1,40 @@
+@model iTunesSearch.Library.Models.TVSeasonListResult
+
+@*
+    Partial View for the results of a song search
+    
+    SponsorAdd will render this page if the user searches for a TV Season
+*@
+
+@{
+    var catalogId = ViewBag.CatalogId;
+}
+
+<h1>Search Results - TV Season </h1>
+<div>
+    
+    @foreach (var item in Model.Seasons)
+    {
+        <div id="seasonElement">
+            <form asp-controller="Catalog" asp-action="AddSeason" method="post" id="form">
+                @if (item.ArtworkUrl != null)
+                {
+                    <img src="@item.ArtworkUrl" alt="Season Artwork"/>
+                }
+
+                <input type="text" asp-for="@item.ShowName" name="ShowName" class="searchResult" readonly/>
+                <input type="text" asp-for="@item.SeasonName" name="SeasonName" class="searchResult" readonly/>
+                <input type="text" asp-for="@item.SeasonPrice" name="SeasonPrice" class="searchResult" readonly/>
+
+                <input type="hidden" asp-for="@item.ShowId" name="ShowId"/>
+                <input type="hidden" asp-for="@item.SeasonId" name="SeasonId"/>
+                <input type="hidden" asp-for="@item.ArtworkUrl" name="ArtworkUrl"/>
+
+                <input type="hidden" name="catalogId" value="@catalogId"/>
+                <input type="submit" value="Add to Catalog"/>
+
+            </form>
+        </div>
+
+    }
+</div>

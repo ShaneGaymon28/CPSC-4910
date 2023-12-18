@@ -1,0 +1,49 @@
+@model Catalog?
+
+@{
+    Layout = "_AdminDashboardLayout";
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Catalog</title>
+</head>
+<body>
+<div>
+    <h1>Catalog</h1>
+
+    <div>
+        <label>Sponsor</label>
+        <form asp-controller="Catalog" asp-action="AdminGetSponsorCatalog" method="get">
+            <select asp-for="Sponsor.Name" name="sponsorId" asp-items="@(new SelectList(ViewBag.sponsors, "Id","Name"))"></select>
+            @*@Html.DropDownList("SponsorName", new SelectList(ViewBag.sponsors, "Id", "Name"))*@
+            <input type="submit" value="View Sponsor Catalog" />
+        </form>
+    </div>
+    
+    <div>
+        @if (Model != null)
+        {
+            <p>Catalog for Sponsor @Model.Sponsor.Name </p>
+            
+            
+            @foreach (var product in Model.Products)
+            {
+                <div>
+                    <img src="@product.ArtworkURL" />
+                    <label>@product.Name</label>
+                    <label>@product.CollectionName</label>
+                    <label>$ @product.DollarPrice</label>
+                    <label>@product.PointPrice points</label>
+                </div>
+                    
+            }    
+                                                                  
+        }
+    </div>
+    
+</div>
+</body>
+</html>

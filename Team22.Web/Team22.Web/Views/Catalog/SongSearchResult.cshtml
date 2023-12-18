@@ -1,0 +1,45 @@
+@model iTunesSearch.Library.Models.SongResult
+
+@*
+    Partial View for the results of a song search
+    
+    SponsorAdd will render this page if the user searches for a song   
+*@
+
+@{
+    var catalogId = ViewBag.CatalogId;
+}
+
+<h1>Search Results - Song </h1>
+
+<div>
+    
+    
+    @foreach (var item in Model.Songs)
+    {
+        <div id="song">
+            <form asp-controller="Catalog" asp-action="AddSong" method="post" id="form">
+                @if (item.ArtworkUrl100 != null)
+                {
+                    <img src="@item.ArtworkUrl100" alt="Song Artwork"/>
+                }
+
+                <input type="text" asp-for="@item.TrackName" name="TrackName" class="searchResult" readonly/>
+                <input type="text" asp-for="@item.ArtistName" name="ArtistName" class="searchResult" readonly/>
+                <input type="text" asp-for="@item.CollectionName" name="CollectionName" class="searchResult" readonly/>
+                <input type="text" asp-for="@item.TrackPrice" name="TrackPrice" class="searchResult" readonly/>
+                <input type="text" asp-for="@item.PrimaryGenreName" name="PrimaryGenreName" class="searchResult" readonly/>
+
+                <input type="hidden" asp-for="@item.TrackId" name="TrackId"/>
+                <input type="hidden" asp-for="@item.ArtistId" name="ArtistId"/>
+                <input type="hidden" asp-for="@item.CollectionId" name="CollectionId"/>
+                <input type="hidden" asp-for="@item.ArtworkUrl100" name="ArtworkUrl100"/>
+
+                <input type="hidden" name="catalogId" value="@catalogId"/>
+                <input type="submit" value="Add to Catalog"/>
+            </form>
+        </div>
+    }
+</div>
+    
+

@@ -1,0 +1,83 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    Layout = "_DashboardLayout";
+    ViewData["Title"] = "Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="~/css/driverlanding.css"/>
+</head>
+<body>
+
+<div>
+    <section class="landing">
+        <div class="container">
+            <div class="left-col">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <h1 class="subhead">Welcome <span class="name" id="driver-name">@UserManager.GetUserName(User)!</span></h1>
+                }
+            </div>
+        </div>
+
+        <div class="recent-point-table">
+            <div class="container">
+                <h3>My Recent Points Activity</h3>
+                <table class="point-table">
+                    <tr>
+                        <th>Point Change</th>
+                        <th>Total Points</th>
+                        <th>Date</th>
+                        <th>Comment</th>
+                    </tr>
+                    <tr>
+                        <td>-10</td>
+                        <td>77</td>
+                        <td>9/15/2022</td>
+                        <td>Don't fall asleep at the wheel ever again!</td>
+                    </tr>
+                    <tr>
+                        <td>+5</td>
+                        <td>87</td>
+                        <td>9/10/2022</td>
+                        <td>Keep up the good work!</td>
+                    </tr>
+                    <tr>
+                        <td>-10</td>
+                        <td>77</td>
+                        <td>9/15/2022</td>
+                        <td>Don't fall asleep at the wheel ever again!</td>
+                    </tr>
+                    <tr>
+                        <td>+5</td>
+                        <td>87</td>
+                        <td>9/10/2022</td>
+                        <td>Keep up the good work!</td>
+                    </tr>
+                    <tr>
+                        <td>-10</td>
+                        <td>77</td>
+                        <td>9/15/2022</td>
+                        <td>Don't fall asleep at the wheel ever again!</td>
+                    </tr>
+                    <tr>
+                        <td>+5</td>
+                        <td>87</td>
+                        <td>9/10/2022</td>
+                        <td>Keep up the good work!</td>
+                    </tr>
+                </table>
+            </div>
+            <a class="complete-history" asp-controller="Point" asp-action="DriverPointHistory">Show Complete History</a>
+
+        </div>
+    </section>
+</div>
+</body>
+</html>

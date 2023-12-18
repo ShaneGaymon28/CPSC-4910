@@ -1,0 +1,76 @@
+#main {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    font-family: "Segoe UI", sans-serif;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #a5a5a5;
+    animation: popup 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: #080808;
+}
+
+.firstAndLast {
+    display: inline;
+    margin-bottom: 20px;
+}
+
+.input-parent {
+    display: inline;
+    margin-bottom: 20px;
+    align-content: center;
+}
+label {
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 2px;
+    color: #000000;
+    padding: 20px;
+}
+.input-parent input {
+    padding: 10px 8px;
+    width: 100%;
+    font-size: 16px;
+    background: #cacaca;
+    border: none;
+    color: #000000;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+.input-parent input:hover {
+    background: #b3b3b3;
+}
+.input-parent input:focus {
+    box-shadow: 0px 0px 0px 1px #1BBA1A;
+}
+
+button {
+    padding: 10px 18px;
+    font-size: 15px;
+    background: #1BBA1A;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    color: #030303;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+button:focus {
+    box-shadow: 0px 0px 0px 3px black;
+}
